@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 dic 2022 9:25:06 by Hibernate Tools 5.6.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="nba" name="nba.Estadisticas" optimistic-lock="none" table="estadisticas">
+        <composite-id class="nba.EstadisticasId" name="id">
+            <key-property name="temporada" type="string">
+                <column length="5" name="Temporada"/>
+            </key-property>
+            <key-property name="codigoJugador" type="int">
+                <column name="CodigoJugador"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="nba.Jugadores" fetch="select" insert="false" name="jugadores" update="false">
+            <column name="CodigoJugador" not-null="true"/>
+        </many-to-one>
+        <property name="puntosPorPartido" type="java.lang.Float">
+            <column name="PuntosPorPartido" precision="12" scale="0"/>
+        </property>
+        <property name="asistenciasPorPartido" type="java.lang.Float">
+            <column name="AsistenciasPorPartido" precision="12" scale="0"/>
+        </property>
+        <property name="taponesPorPartido" type="java.lang.Float">
+            <column name="TaponesPorPartido" precision="12" scale="0"/>
+        </property>
+        <property name="rebotesPorPartido" type="java.lang.Float">
+            <column name="RebotesPorPartido" precision="12" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>
